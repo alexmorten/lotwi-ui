@@ -1,0 +1,30 @@
+{{outlet}}
+<ul>
+  {{#each model as |post|}}
+    <li>
+      <h4>{{post.title}}</h4>
+      <p>
+        {{post.text}}
+      </p>
+      <p>
+        <h5>Location</h5>
+        <p>
+          Lat:{{post.location.lat}}
+        </p>
+        <p>
+          Lng:{{post.location.lng}}
+        </p>
+        <p>
+          distance:{{post.dist}}
+        </p>
+      </p>
+      <button {{action "deletePost" post}}>delete</button>
+    </li>
+  {{/each}}
+</ul>
+
+<form {{action "createPost" title text}}>
+  {{input type="text" value=title placeholder="title"}}
+  {{input type="text" value=text placeholder="text"}}
+  <button type="submit">add</button>
+</form>
