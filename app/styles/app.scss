@@ -1,1 +1,18 @@
+
+
+
+$primaryBackgroundColor:#43e7ec;
+$secondaryBackgroundColor:white;
+$border-color:#a4a4a4;
+
+@import "form-items.scss";
+
+
+body{
+background-color: $primaryBackgroundColor;
+font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+
+
 @import "posts.scss";

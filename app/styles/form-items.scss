@@ -1,0 +1,65 @@
+$button-color:#0057a7;
+$button-hover-color:#034179;
+form{
+
+}
+button{
+  text-transform: uppercase;
+  outline: 0;
+  background: #0057a7;
+  border: 0;
+  margin: 10px auto;
+  padding: 15px;
+  color: #FFFFFF;
+  -webkit-transition: all 400ms ease;
+  transition: all 400ms ease;
+  cursor: pointer;
+  transition: all 500ms;
+}
+input{
+  width: 100%;
+  outline: 0;
+  // background: rgba($primary-input-color,.8);
+  width: 100%;
+  border: 1px solid $secondaryBackgroundColor;
+  border-bottom: 1px solid $border-color;
+  margin: 10px 0;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 20px;
+  transition: all 500ms;
+  border-radius: 1px;
+}
+input:focus{
+  background-color: #f1f1f1;
+  border: 1px solid $border-color;
+}
+
+button:hover{
+   background: $button-hover-color;
+}
+button.disabled{
+background: red;
+
+}
+
+
+
+
+
+.positive{
+  background: #158f1a ;
+  transition: all 2s;
+}
+.positive:hover{
+  background-color: #229d26 ;
+
+}
+.negative{
+  background-color:red ;
+  transition: all 2s;
+}
+.negative:hover{
+  background-color:darkred ;
+
+}

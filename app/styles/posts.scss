@@ -1,0 +1,39 @@
+
+.posts-container{
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+}
+
+.posts{
+  .posts-form{
+    position: relative;
+    padding: 10px;
+    padding-bottom: 60px;
+    button{
+      position: absolute;
+      right: 10px;
+    }
+  }
+  background-color: $secondaryBackgroundColor;
+  border: 1px solid $border-color;
+  border-radius: 10px;
+  padding: 0;
+  ul{
+    list-style: none;
+    padding: 0;
+    li{
+      padding: 0;
+      border-top: 1px solid $border-color;
+      .post-title{
+        padding: 0 5px;
+        text-align: left;
+      }
+      .post-text{
+        padding: 0 5px;
+        text-align: center;
+      }
+    }
+  }
+
+}

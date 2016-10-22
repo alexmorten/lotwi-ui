@@ -5,27 +5,50 @@ export default Ember.Route.extend({
   model() {
     var that=this;
       return new Ember.RSVP.Promise(function(resolve) {
-      that.get("geolocation").getLocation().then(function(geoObject){
-        var coords=geoObject.coords;
+      var geo = that.get("geolocation");
+      var currentLocation=geo.get("currentLocation");
+      if(currentLocation && currentLocation.length >= 2){
+        var lat=currentLocation[0];
+        var lng=currentLocation[1];
         resolve(
           that.store.query("post",{
-            lat:coords.latitude,
-            lng:coords.longitude,
-            dist:5,
+            lat:lat,
+            lng:lng,
+            dist:5, //TODO : change to user controlled behavior
             limit:20
           })
         );
-      });
+      }else{
+        geo.getLocation().then(function(geoObject){
+          var lat=geoObject.coords.latitude;
+          var lng=geoObject.coords.longitude;
+          resolve(
+            that.store.query("post",{
+              lat:lat,
+              lng:lng,
+              dist:5, //TODO : change to user controlled behavior
+              limit:20
+            })
+          );
+        });
+      }
+
       });
     },
   actions:{
     deletePost(post){
       post.destroyRecord();
+      this.refresh();
     },
     createPost(title,text){
       var that=this;
       if(title &&  text){
-        this.get('geolocation').getLocation().then(function(geoObject) {
+        this.controllerFor("posts").set("title",null);
+        this.controllerFor("posts").set("text",null);
+        var geo = that.get("geolocation");
+        var currentLocation=geo.get("currentLocation");
+          var lat = currentLocation[0];
+          var lng = currentLocation[1];
 
           var p = that.store.createRecord("post",{
             title:title,
@@ -33,13 +56,15 @@ export default Ember.Route.extend({
           });
           p.save().then(function(post){
             var l = that.store.createRecord("location",{
-            lng:geoObject.coords.longitude,
-            lat:geoObject.coords.latitude,
+            lng:lng,
+            lat:lat,
             post:post
             });
-            l.save();
+            l.save().then(function(){
+              that.refresh();
+            });
           })
-          });
+
       }
     }
   }
