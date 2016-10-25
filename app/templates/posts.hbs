@@ -1,21 +1,20 @@
 
 <div class="posts-container">
   <div class="posts">
-    <form class="posts-form" {{action "createPost" title text}}>
+    <form class="posts-form" >
       {{input type="text" value=title placeholder="title"}}
       {{input type="text" value=text placeholder="text"}}
-      <button type="submit">add</button>
+      <button type="submit" {{action "createPost" title text}}>add</button>
     </form>
+    <div class="post-task-bar">
+      {{input type="number" value="radius" placeholder="radius" class="posts-radius"}}
+      <button type="button" {{action "refresh"}}>refresh</button>
+    </div>
     <ul>
 
-      {{#each model as |post|}}
+      {{#each posts as |post|}}
         <li>
-          <h3 class="post-title">{{post.title}}</h3>
-          <p class="post-text">
-            {{post.text}}
-          </p>
-
-          <button {{action "deletePost" post}}>delete</button>
+          {{single-post post=post delete="deletePost" currentTime=currentTime}}
         </li>
       {{/each}}
     </ul>

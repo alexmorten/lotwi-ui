@@ -1,0 +1,14 @@
+<p class="post-distance">
+  {{distance}} away
+</p>
+<p class="post-time">
+  {{timeAgo}} ago
+</p>
+<h3 class="post-title">{{post.title}}</h3>
+<p class="post-text">
+  {{post.text}}
+</p>
+
+
+<button class="post-delete-button" {{action "delete" post}}>delete</button>
+{{yield}}

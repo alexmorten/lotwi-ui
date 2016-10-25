@@ -5,4 +5,5 @@ export default DS.Model.extend({
   title: DS.attr('string'),
   location: DS.belongsTo('location',{ async: false }),
   dist:DS.attr('number'),
+  created:DS.attr('date'),
 });

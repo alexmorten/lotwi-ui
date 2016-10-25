@@ -36,6 +36,9 @@ export default Ember.Route.extend({
       });
     },
   actions:{
+    refresh(){
+      this.refresh();
+    },
     deletePost(post){
       post.destroyRecord();
       this.refresh();
