@@ -5,7 +5,7 @@ export default Ember.Component.extend({
 
   distance:function(){
     var dist=this.get("post.dist");
-    var roundedDist=Math.round(dist * 10) / 10;
+    var roundedDist=Math.round(dist * 100) / 100;
     return roundedDist + "km";
   }.property("post.dist"),
 
