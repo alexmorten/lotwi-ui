@@ -12,7 +12,10 @@ body{
 background-color: $primaryBackgroundColor;
 font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
-
+.header{
+  text-align: center;
+  
+}
 
 
 @import "posts.scss";

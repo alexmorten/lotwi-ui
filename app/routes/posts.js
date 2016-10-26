@@ -2,7 +2,15 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   geolocation: Ember.inject.service(),
-  model() {
+  queryParams: {
+    limit: {
+      refreshModel: true
+    },
+    radius: {
+      refreshModel: true
+    }
+  },
+  model(params) {
     var that=this;
       return new Ember.RSVP.Promise(function(resolve) {
       var geo = that.get("geolocation");
@@ -14,8 +22,8 @@ export default Ember.Route.extend({
           that.store.query("post",{
             lat:lat,
             lng:lng,
-            dist:5, //TODO : change to user controlled behavior
-            limit:20
+            dist:params.radius,
+            limit:params.limit
           })
         );
       }else{
@@ -26,8 +34,8 @@ export default Ember.Route.extend({
             that.store.query("post",{
               lat:lat,
               lng:lng,
-              dist:5, //TODO : change to user controlled behavior
-              limit:20
+              dist:params.radius,
+              limit:params.limit
             })
           );
         });

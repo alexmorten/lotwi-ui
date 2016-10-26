@@ -28,19 +28,19 @@ export default Ember.Component.extend({
     interval = Math.floor(seconds / 86400);
     if (interval >= 1) {
 
-        return interval + " days";
+        return interval + "d";
     }
     interval = Math.floor(seconds / 3600);
     if (interval >= 1) {
 
-        return interval + " hours";
+        return interval + " h";
     }
     interval = Math.floor(seconds / 60);
     if (interval >= 1) {
 
-        return interval + " minutes";
+        return interval + "min";
     }
-    return Math.floor(seconds) + " seconds";
+    return Math.floor(seconds) + "s";
   }.property("post.created","currentTime"),
   actions:{
 

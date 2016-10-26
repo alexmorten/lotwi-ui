@@ -2,13 +2,19 @@
 <div class="posts-container">
   <div class="posts">
     <form class="posts-form" >
+      <p>
+
+      </p>
       {{input type="text" value=title placeholder="title"}}
       {{input type="text" value=text placeholder="text"}}
-      <button type="submit" {{action "createPost" title text}}>add</button>
+      <button type="submit" {{action "createPost" title text}}>Send message</button>
     </form>
     <div class="post-task-bar">
-      {{input type="number" value="radius" placeholder="radius" class="posts-radius"}}
-      <button type="button" {{action "refresh"}}>refresh</button>
+
+      radius
+      {{input type="number" value=radius placeholder="radius" class="posts-radius"}}
+      km
+      <button type="button" class="posts-refresh" {{action "refresh"}}>refresh</button>
     </div>
     <ul>
 
