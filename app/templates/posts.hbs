@@ -1,29 +1,28 @@
 
 <div class="posts-container">
   <div class="posts">
+    
     <form class="posts-form" >
-      <p>
-
-      </p>
       {{input type="text" value=title placeholder="title"}}
       {{input type="text" value=text placeholder="text"}}
       <button type="submit" {{action "createPost" title text}}>Send message</button>
     </form>
-    <div class="post-task-bar">
 
+    <div class="post-task-bar">
       radius
       {{input type="number" value=radius placeholder="radius" class="posts-radius"}}
       km
       <button type="button" class="posts-refresh" {{action "refreshRoute"}}>refresh</button>
     </div>
-    <ul>
 
+    <ul>
       {{#each posts as |post|}}
         <li>
           {{single-post post=post delete="deletePost" currentTime=currentTime}}
         </li>
       {{/each}}
     </ul>
+
   </div>
 </div>
 
