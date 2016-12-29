@@ -1,0 +1,16 @@
+<button type="button" name="button" {{action 'toggleShowing'}}> {{if showing 'hide' 'show map'}}</button>
+{{#if showing}}
+  <div class="map-container">
+    {{#leaflet-map class="map" lat=location.lat lng=location.lng zoom=zoom}}
+      {{tile-layer url="http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"}}
+
+      {{#marker-layer lat=location.lat lng=location.lng}}
+        {{#popup-layer}}
+          <h3>location.post.title</h3>
+          <p>location.post.text</p>
+        {{/popup-layer}}
+      {{/marker-layer}}
+    {{/leaflet-map}}
+  </div>
+{{/if}}
+{{yield}}

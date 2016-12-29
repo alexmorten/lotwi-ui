@@ -1,3 +1,4 @@
+
 <p class="post-distance">
   {{distance}} away
 </p>
@@ -9,6 +10,6 @@
   {{post.text}}
 </p>
 
+{{yield}}
 
 <button class="post-delete-button" {{action "delete" post}}>delete</button>
-{{yield}}

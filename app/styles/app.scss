@@ -18,7 +18,25 @@ font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   border-radius: 3px;
   position: relative;
   top: -10px;
+  .navbar{
+    padding-bottom: 5px;
+    a{
+      text-decoration: none;
+      font-weight: bolder;
+      margin: 10px;
+      color: inherit;
+      text-shadow: 0 0 2px #3c7da6;
+      border: 0px solid rgba(#fff,0);
+      transition: all 400ms;
+      border-radius:50%;
+    }
+    a.active{
+      border-radius:2px;
+      border-bottom: 3px solid rgba(#b395f2,1);
+    }
+  }
 }
 
 
 @import "posts.scss";
+@import "locations.scss";

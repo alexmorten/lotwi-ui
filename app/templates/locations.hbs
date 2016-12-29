@@ -1,0 +1,16 @@
+{{#leaflet-map class="big-map" lat=model.currentLocation.coords.latitude lng=model.currentLocation.coords.longitude zoom=zoom}}
+
+  {{tile-layer url="http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"}}
+
+  {{#each model.allLocations as |location|}}
+    {{#marker-layer lat=location.lat lng=location.lng}}
+      {{#popup-layer}}
+        <h3>{{location.post.title}}</h3>
+        <p>{{location.post.text}}</p>
+      {{/popup-layer}}
+    {{/marker-layer}}
+  {{/each}}
+
+{{/leaflet-map}}
+
+{{outlet}}

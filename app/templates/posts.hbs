@@ -1,7 +1,7 @@
 
 <div class="posts-container">
   <div class="posts">
-    
+
     <form class="posts-form" >
       {{input type="text" value=title placeholder="title"}}
       {{input type="text" value=text placeholder="text"}}
@@ -18,7 +18,10 @@
     <ul>
       {{#each posts as |post|}}
         <li>
-          {{single-post post=post delete="deletePost" currentTime=currentTime}}
+          {{#single-post post=post delete="deletePost" currentTime=currentTime}}
+            {{location-map location=post.location}}
+          {{/single-post}}
+
         </li>
       {{/each}}
     </ul>
