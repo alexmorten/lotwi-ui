@@ -12,6 +12,7 @@ export default Ember.Component.extend({
   timeAgo:function(){
     var created = this.get("post.created");
     var currentTime = this.get("currentTime");
+    if(!currentTime){ currentTime = new Date();}
     var seconds = Math.floor((currentTime - created) / 1000);
 
     var interval = Math.floor(seconds / 31536000);

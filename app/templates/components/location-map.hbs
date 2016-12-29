@@ -5,10 +5,11 @@
       {{tile-layer url="http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"}}
 
       {{#marker-layer lat=location.lat lng=location.lng}}
-        {{#popup-layer}}
+        {{!-- {{#popup-layer}}
           <h3>{{location.post.title}}</h3>
           <p>{{location.post.text}}</p>
-        {{/popup-layer}}
+
+        {{/popup-layer}} --}}
       {{/marker-layer}}
     {{/leaflet-map}}
   </div>
