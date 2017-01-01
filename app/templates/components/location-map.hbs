@@ -1,16 +1,13 @@
-<button type="button" name="button" {{action 'toggleShowing'}}> {{if showing 'hide' 'show map'}}</button>
+<button class="secondary" type="button" name="button" {{action 'toggleShowing'}}> {{if showing 'hide' 'show map'}}</button>
 {{#if showing}}
   <div class="map-container">
-    {{#leaflet-map class="map" lat=location.lat lng=location.lng zoom=zoom}}
+    {{#leaflet-map class="map" lat=postLocation.lat lng=postLocation.lng zoom=zoom}}
       {{tile-layer url="http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"}}
 
-      {{#marker-layer lat=location.lat lng=location.lng}}
-        {{!-- {{#popup-layer}}
-          <h3>{{location.post.title}}</h3>
-          <p>{{location.post.text}}</p>
-
-        {{/popup-layer}} --}}
+      {{#marker-layer lat=postLocation.lat lng=postLocation.lng}}
       {{/marker-layer}}
+      {{circle-layer lat=currentLocation.lat lng=currentLocation.lng radius=10}}
+      {{circle-layer lat=currentLocation.lat lng=currentLocation.lng radius=radiusMeters}}
     {{/leaflet-map}}
   </div>
 {{/if}}

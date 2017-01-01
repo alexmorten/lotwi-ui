@@ -1,14 +1,15 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  queryParams: ['limit','radius','title','text'],
+  queryParams: ['limit','radius','query','title','text'],
   limit: 10,
   radius:5,
+  query:'',
   title:null,
   text:null,
   currentTime:new Date(),
   sortBy:["created:desc"],
-  posts:Ember.computed.sort("model","sortBy"),
+  posts:Ember.computed.sort("model.posts","sortBy"),
   init(){
     var that=this;
     var update = function(){

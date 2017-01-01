@@ -1,7 +1,7 @@
-{{#leaflet-map class="big-map" lat=model.currentLocation.coords.latitude lng=model.currentLocation.coords.longitude zoom=zoom}}
+{{#leaflet-map class="big-map" lat=model.currentLocation.lat lng=model.currentLocation.lng zoom=zoom}}
 
   {{tile-layer url="http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"}}
-
+  {{circle-layer lat=model.currentLocation.lat lng=model.currentLocation.lng radius=10}}
   {{#each model.allLocations as |location|}}
     {{#marker-layer lat=location.lat lng=location.lng}}
       {{#popup-layer}}

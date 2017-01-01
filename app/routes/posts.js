@@ -9,6 +9,9 @@ export default Ember.Route.extend({
     },
     radius: {
       refreshModel: true
+    },
+    query: {
+      refreshModel: true
     }
   },
   model(params) {
@@ -20,26 +23,31 @@ export default Ember.Route.extend({
       if(currentLocation && currentLocation.length >= 2){ // case 2; lat and lng are already known
         var lat=currentLocation[0];
         var lng=currentLocation[1];
-        resolve(
-          that.store.query("post",{
+        resolve(Ember.RSVP.hash({
+          currentLocation:{lat:lat,lng:lng},
+          posts:that.store.query("post",{
             lat:lat,
             lng:lng,
             dist:params.radius,
-            limit:params.limit
+            limit:params.limit,
+            query:params.query
           })
-        );
+        }));
       }else{ // case 1; lat and lng have to be determined by the browser first
         geo.getLocation().then(function(geoObject){ // takes a considerable amount of time!
           var lat=geoObject.coords.latitude;
           var lng=geoObject.coords.longitude;
-          resolve(
-            that.store.query("post",{
+          resolve(Ember.RSVP.hash({
+            currentLocation:{lat:lat,lng:lng},
+            posts:that.store.query("post",{
               lat:lat,
               lng:lng,
               dist:params.radius,
-              limit:params.limit
+              limit:params.limit,
+              query:params.query
             })
-          );
+          }));
+        
         });
       }
       });
@@ -49,8 +57,11 @@ export default Ember.Route.extend({
       this.refresh();
     },
     deletePost(post){
-      post.destroyRecord();
-      this.refresh();
+      var that=this;
+      post.destroyRecord().then(function(){
+        that.refresh();
+      });
+
     },
 
     createPost(title,text){

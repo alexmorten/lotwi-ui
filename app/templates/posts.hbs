@@ -9,17 +9,35 @@
     </form>
 
     <div class="post-task-bar">
-      radius
-      {{input type="number" value=radius placeholder="radius" class="posts-radius"}}
-      km
-      <button type="button" class="posts-refresh" {{action "refreshRoute"}}>refresh</button>
+      <div class="tasks">
+        <div class="task-item">
+
+          {{input type="number" value=limit placeholder="limit" class="posts-radius"}}
+          posts
+        </div>
+        <div class="task-item">
+          in
+          {{input type="number" value=radius placeholder="radius" class="posts-radius"}}
+          km radius
+        </div>
+        <div class="task-item">
+          with
+          '
+          {{input type="text" value=query placeholder="" class="posts-radius"}}
+          '
+        </div>
+      </div>
+
+
+
+
     </div>
 
     <ul>
       {{#each posts as |post|}}
         <li>
           {{#single-post post=post delete="deletePost" currentTime=currentTime}}
-            {{location-map location=post.location}}
+            {{location-map postLocation=post.location currentLocation=model.currentLocation radius=radius}}
           {{/single-post}}
 
         </li>

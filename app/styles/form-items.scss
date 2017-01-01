@@ -1,12 +1,12 @@
 $button-color:#0057a7;
-$button-hover-color:#034179;
+$button-hover-color:#209e2e;
 form{
 
 }
 button{
   text-transform: uppercase;
   outline: 0;
-  background: #0057a7;
+  background: #2981ca;
   border: 0;
   margin: 10px auto;
   padding: 15px;
@@ -28,13 +28,48 @@ input{
   box-sizing: border-box;
   font-size: 20px;
   transition: all 500ms;
-  border-radius: 1px;
+  border-radius: 3px;
+  background-color: $secondaryBackgroundColor;
+  color: inherit;
 }
 input:focus{
   background-color: #f1f1f1;
   border: 1px solid $border-color;
+  color:#242424;
+}
+$placeholder-color:white;
+$placeholder-focus-color:#4d4d4d;
+input::-webkit-input-placeholder {
+   color: $placeholder-color;
 }
 
+input:-moz-placeholder { /* Firefox 18- */
+   color: $placeholder-color;
+}
+
+input::-moz-placeholder {  /* Firefox 19+ */
+   color: $placeholder-color;
+}
+
+input:-ms-input-placeholder {
+   color: $placeholder-color;
+}
+
+input:focus::-webkit-input-placeholder {
+   color: $placeholder-focus-color;
+}
+
+input:focus:-moz-placeholder { /* Firefox 18- */
+   color: $placeholder-focus-color;
+}
+
+input:focus::-moz-placeholder {  /* Firefox 19+ */
+   color: $placeholder-focus-color;
+}
+
+input:focus:-ms-input-placeholder {
+   color: $placeholder-focus-color;
+}
 button:hover{
    background: $button-hover-color;
 }
@@ -42,8 +77,26 @@ button.disabled{
 background: red;
 
 }
-
-
+button.secondary{
+  text-transform: none;
+  padding: 2px 10px;
+  border-radius: 3px;
+  background: #2b403e;
+  border: 1px solid $border-color;
+  float: right;
+}
+button.secondary:hover{
+  padding: 2px 12px;
+}
+button.delete{
+background: #c60707;
+text-shadow: 0px 0px 2px #000000;
+padding: 4px 10px;
+}
+button.delete:hover{
+  background: #860404;
+  padding: 4px 12px;
+}
 
 
 
