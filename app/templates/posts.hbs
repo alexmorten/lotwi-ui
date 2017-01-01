@@ -26,26 +26,53 @@
           {{input type="text" value=query placeholder="" class="posts-radius"}}
           '
         </div>
+        <div class="task-item">
+          <button type="button" name="button" {{action 'toggleMode'}}>{{if showingMap 'List' 'Map'}}</button>
+        </div>
       </div>
 
 
 
 
     </div>
+    {{#if showingMap}}
+    {{else}}
+      <ul>
+        {{#each posts as |post|}}
+          <li>
+            {{#single-post post=post delete="deletePost" currentTime=currentTime}}
+              {{location-map postLocation=post.location currentLocation=model.currentLocation radius=radius}}
+              {{/single-post}}
 
-    <ul>
-      {{#each posts as |post|}}
-        <li>
-          {{#single-post post=post delete="deletePost" currentTime=currentTime}}
-            {{location-map postLocation=post.location currentLocation=model.currentLocation radius=radius}}
-          {{/single-post}}
-
-        </li>
+          </li>
       {{/each}}
     </ul>
+    {{/if}}
+
 
   </div>
 </div>
+    {{#if showingMap}}
+      <div class="big-map-container">
 
+
+        {{#leaflet-map class="big-map" lat=model.currentLocation.lat lng=model.currentLocation.lng zoom=zoom}}
+
+          {{tile-layer url="http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"}}
+          {{circle-layer lat=model.currentLocation.lat lng=model.currentLocation.lng radius=10}}
+          {{circle-layer lat=model.currentLocation.lat lng=model.currentLocation.lng radius=radiusMeters}}
+          {{#each model.posts as |post|}}
+            {{#marker-layer lat=post.location.lat lng=post.location.lng}}
+              {{#popup-layer}}
+                {{!-- <h3>{{post.title}}</h3>
+                <p>{{post.text}}</p> --}}
+                {{single-post class="post-popup" post=post delete="deletePost" currentTime=currentTime}}
+              {{/popup-layer}}
+            {{/marker-layer}}
+          {{/each}}
+
+        {{/leaflet-map}}
+      </div>
+    {{/if}}
 
 {{outlet}}
