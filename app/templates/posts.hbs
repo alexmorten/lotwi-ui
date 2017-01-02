@@ -57,7 +57,7 @@
 
         {{#leaflet-map class="big-map" lat=model.currentLocation.lat lng=model.currentLocation.lng zoom=zoom}}
 
-          {{tile-layer url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"}}
+          {{tile-layer url="http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"}}
           {{circle-layer lat=model.currentLocation.lat lng=model.currentLocation.lng radius=10}}
           {{circle-layer lat=model.currentLocation.lat lng=model.currentLocation.lng radius=radiusMeters}}
           {{#each model.posts as |post|}}
