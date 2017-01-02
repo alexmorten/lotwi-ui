@@ -2,7 +2,7 @@
 {{#if showing}}
   <div class="map-container">
     {{#leaflet-map class="map" lat=postLocation.lat lng=postLocation.lng zoom=zoom}}
-      {{tile-layer url="http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"}}
+      {{tile-layer url="https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png"}}
 
       {{#marker-layer lat=postLocation.lat lng=postLocation.lng}}
       {{/marker-layer}}
