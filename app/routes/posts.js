@@ -1,8 +1,8 @@
 import Ember from 'ember';
-
+import Notify from 'ember-notify';
 export default Ember.Route.extend({
   geolocation: Ember.inject.service(),
-
+  notify: Ember.inject.service(),
   queryParams: {
     limit: {
       refreshModel: true
@@ -47,7 +47,7 @@ export default Ember.Route.extend({
               query:params.query
             })
           }));
-        
+
         });
       }
       });
@@ -59,6 +59,7 @@ export default Ember.Route.extend({
     deletePost(post){
       var that=this;
       post.destroyRecord().then(function(){
+        that.get("notify").alert("Post deleted");
         that.refresh();
       });
 
@@ -67,8 +68,8 @@ export default Ember.Route.extend({
     createPost(title,text){
       var that=this;
       if(title &&  text){
-        this.controllerFor("posts").set("title",null);
-        this.controllerFor("posts").set("text",null);
+        this.controllerFor("posts").set("title",'');
+        this.controllerFor("posts").set("text",'');
         var geo = that.get("geolocation");
         var currentLocation=geo.get("currentLocation");
           var lat = currentLocation[0];
@@ -85,6 +86,7 @@ export default Ember.Route.extend({
             post:post
             });
             l.save().then(function(){
+              that.get("notify").success("Post created");
               that.refresh();
             });
           })

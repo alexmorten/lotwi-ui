@@ -41,6 +41,19 @@ color:#e9e9e9;
     }
   }
 }
-
+.notification-box {
+  .alert{
+    background-color: #c60707;
+  }
+  .warning{
+    background-color: #917600;
+  }
+  .info{
+    background-color: #2981ca;
+  }
+  .success{
+    background-color: #209e2e;;
+  }
+}
 
 @import "posts.scss";

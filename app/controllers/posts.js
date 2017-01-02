@@ -1,14 +1,15 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  queryParams: ['limit','radius','query','title','text','mode'],
-  limit: 10,
+  queryParams: ['limit','radius','query','title','text','mode','zoom','mapLat','mapLng'],
+  limit: 20,
   radius:5,
   query:'',
-  title:null,
-  text:null,
+  title:'',
+  text:'',
   mode:'list',
   zoom:13,
+
   currentTime:new Date(),
   sortBy:["created:desc"],
   posts:Ember.computed.sort("model.posts","sortBy"),
@@ -40,6 +41,7 @@ export default Ember.Controller.extend({
       }else{
         this.set("mode","list");
       }
-    }
+    },
+
   }
 });

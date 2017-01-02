@@ -31,7 +31,9 @@
         }
       }
     }
-
+    .mode-toggle-button{
+      display: block;
+    }
 
     border-top: 1px solid $border-color;
 
@@ -39,6 +41,7 @@
   ul{
     list-style: none;
     padding: 0;
+    margin: 0;
     li{
       padding: 0;
       border-top: 1px solid $border-color;
@@ -95,6 +98,7 @@
   background-color: $secondaryBackgroundColor;
   border: 1px solid $border-color;
   border-radius: 10px;
+  box-sizing: border-box;
   .big-map{
     width: 100%;
     height: auto;

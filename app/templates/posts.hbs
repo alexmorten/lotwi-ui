@@ -26,14 +26,13 @@
           {{input type="text" value=query placeholder="" class="posts-radius"}}
           '
         </div>
-        <div class="task-item">
-          <button type="button" name="button" {{action 'toggleMode'}}>{{if showingMap 'List' 'Map'}}</button>
-        </div>
+
+
+
       </div>
-
-
-
-
+    </div>
+    <div class="post-task-bar">
+        <button type="button" name="button" class="mode-toggle-button" {{action 'toggleMode'}}>{{if showingMap 'Show as List' 'Show as Map'}}</button>
     </div>
     {{#if showingMap}}
     {{else}}
