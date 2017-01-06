@@ -24,7 +24,6 @@ export default Ember.Controller.extend({
     var update = function(){
       if(that.get("currentTime")){
         that.set("currentTime",new Date());
-        console.log("update");
         Ember.run.later(null,update,2000);
       }
     }

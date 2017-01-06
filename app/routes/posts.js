@@ -18,7 +18,10 @@ export default Ember.Route.extend({
     var that=this;
       return new Ember.RSVP.Promise(function(resolve) {
       var geo = that.get("geolocation");
-      geo.trackLocation();
+      geo.trackLocation().then(function(geoObject){
+        console.log("location updated");
+        that.refresh();
+      });
       var currentLocation=geo.get("currentLocation");
       if(currentLocation && currentLocation.length >= 2){ // case 2; lat and lng are already known
         var lat=currentLocation[0];
