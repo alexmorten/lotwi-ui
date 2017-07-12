@@ -1,5 +1,6 @@
 # Lotwi-ui
 Hosted on [Heroku](https://lotwi-ui.herokuapp.com/)
+![Image](/readme-images/image0.png)
 ![Image](/readme-images/image1.png)
 ![Image](/readme-images/image2.png)
 ## Prerequisites
