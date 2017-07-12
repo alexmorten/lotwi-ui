@@ -1,8 +1,7 @@
 # Lotwi-ui
-
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
-
+Hosted on [Heroku](https://lotwi-ui.herokuapp.com/)
+![Image](/readme-images/image1.png)
+![Image](/readme-images/image2.png)
 ## Prerequisites
 
 You will need the following things properly installed on your computer.
@@ -41,7 +40,7 @@ Make use of the many generators for code, try `ember help generate` for more det
 
 ### Deploying
 
-Specify what it takes to deploy your app.
+Simplay push to master -> Heroku takes care of the rest.
 
 ## Further Reading / Useful Links
 
@@ -50,4 +49,3 @@ Specify what it takes to deploy your app.
 * Development Browser Extensions
   * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
   * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
-
