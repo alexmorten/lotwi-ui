@@ -51,6 +51,10 @@ export default Ember.Route.extend({
             })
           }));
 
+        },function(){
+          resolve({
+            failed:true
+          });
         });
       }
       });

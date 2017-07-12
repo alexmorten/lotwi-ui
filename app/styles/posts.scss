@@ -1,4 +1,17 @@
-
+.fail-container{
+  text-align: center;
+  background-color: #a72b00;
+  padding: 0;
+  margin: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width:100%;
+  height:100%;
+  h3{
+    margin-top: 30vh;
+  }
+}
 .posts-container{
   width: 100%;
   max-width: 500px;

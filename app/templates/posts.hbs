@@ -1,77 +1,84 @@
-
-<div class="posts-container">
-  <div class="posts">
-
-    <form class="posts-form" >
-      {{input type="text" value=title placeholder="title"}}
-      {{input type="text" value=text placeholder="text"}}
-      <button type="submit" {{action "createPost" title text}}>Send message</button>
-    </form>
-
-    <div class="post-task-bar">
-      <div class="tasks">
-        <div class="task-item">
-
-          {{input type="number" value=limit placeholder="limit" class="posts-radius"}}
-          posts
-        </div>
-        <div class="task-item">
-          in
-          {{input type="number" value=radius placeholder="radius" class="posts-radius"}}
-          km radius
-        </div>
-        <div class="task-item">
-          with
-          '
-          {{input type="text" value=query placeholder="" class="posts-radius"}}
-          '
-        </div>
-
-
-
-      </div>
-    </div>
-    <div class="post-task-bar">
-        <button type="button" name="button" class="mode-toggle-button" {{action 'toggleMode'}}>{{if showingMap 'Show as List' 'Show as Map'}}</button>
-    </div>
-    {{#if showingMap}}
-    {{else}}
-      <ul>
-        {{#each posts as |post|}}
-          <li>
-            {{#single-post post=post delete="deletePost" currentTime=currentTime}}
-              {{location-map postLocation=post.location currentLocation=model.currentLocation radius=radius}}
-              {{/single-post}}
-
-          </li>
-      {{/each}}
-    </ul>
-    {{/if}}
-
-
+{{#if model.failed}}
+  <div class="fail-container">
+    <h3>Determining your location has failed </h3>
+    <p>Make sure you give the site permission to access your location (and possibly enable gps on your mobile device)</p>
   </div>
-</div>
-    {{#if showingMap}}
-      <div class="big-map-container">
+{{else}}
+  <div class="posts-container">
+    <div class="posts">
+
+      <form class="posts-form" >
+        {{input type="text" value=title placeholder="title"}}
+        {{input type="text" value=text placeholder="text"}}
+        <button type="submit" {{action "createPost" title text}}>Send message</button>
+      </form>
+
+      <div class="post-task-bar">
+        <div class="tasks">
+          <div class="task-item">
+
+            {{input type="number" value=limit placeholder="limit" class="posts-radius"}}
+            posts
+          </div>
+          <div class="task-item">
+            in
+            {{input type="number" value=radius placeholder="radius" class="posts-radius"}}
+            km radius
+          </div>
+          <div class="task-item">
+            with
+            '
+            {{input type="text" value=query placeholder="" class="posts-radius"}}
+            '
+          </div>
 
 
-        {{#leaflet-map class="big-map" lat=model.currentLocation.lat lng=model.currentLocation.lng zoom=zoom}}
 
-          {{tile-layer url="https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png"}}
-          {{circle-layer lat=model.currentLocation.lat lng=model.currentLocation.lng radius=10}}
-          {{circle-layer lat=model.currentLocation.lat lng=model.currentLocation.lng radius=radiusMeters}}
-          {{#each model.posts as |post|}}
-            {{#marker-layer lat=post.location.lat lng=post.location.lng}}
-              {{#popup-layer}}
-                {{!-- <h3>{{post.title}}</h3>
-                <p>{{post.text}}</p> --}}
-                {{single-post class="post-popup" post=post delete="deletePost" currentTime=currentTime}}
-              {{/popup-layer}}
-            {{/marker-layer}}
-          {{/each}}
-
-        {{/leaflet-map}}
+        </div>
       </div>
-    {{/if}}
+      <div class="post-task-bar">
+          <button type="button" name="button" class="mode-toggle-button" {{action 'toggleMode'}}>{{if showingMap 'Show as List' 'Show as Map'}}</button>
+      </div>
+      {{#if showingMap}}
+      {{else}}
+        <ul>
+          {{#each posts as |post|}}
+            <li>
+              {{#single-post post=post delete="deletePost" currentTime=currentTime}}
+                {{location-map postLocation=post.location currentLocation=model.currentLocation radius=radius}}
+                {{/single-post}}
 
+            </li>
+        {{/each}}
+      </ul>
+      {{/if}}
+
+
+    </div>
+  </div>
+      {{#if showingMap}}
+        <div class="big-map-container">
+
+
+          {{#leaflet-map class="big-map" lat=model.currentLocation.lat lng=model.currentLocation.lng zoom=zoom}}
+
+            {{tile-layer url="https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png"}}
+            {{circle-layer lat=model.currentLocation.lat lng=model.currentLocation.lng radius=10}}
+            {{circle-layer lat=model.currentLocation.lat lng=model.currentLocation.lng radius=radiusMeters}}
+            {{#each model.posts as |post|}}
+              {{#marker-layer lat=post.location.lat lng=post.location.lng}}
+                {{#popup-layer}}
+                  {{!-- <h3>{{post.title}}</h3>
+                  <p>{{post.text}}</p> --}}
+                  {{single-post class="post-popup" post=post delete="deletePost" currentTime=currentTime}}
+                {{/popup-layer}}
+              {{/marker-layer}}
+            {{/each}}
+
+          {{/leaflet-map}}
+        </div>
+      {{/if}}
+
+
+{{/if}}
 {{outlet}}
